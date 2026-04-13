@@ -5,7 +5,7 @@ import {
   getSectionOrder,
 } from '../utils/builderDrag';
 
-test('e2e test', async ({ page }) => {
+test('e2e test 1 -  add text section', async ({ page }) => {
   await page.goto('https://uat.diy.gowhere.gov.sg/home');
   await expect(page.getByRole('button', { name: 'How to identify' })).toBeVisible();
 

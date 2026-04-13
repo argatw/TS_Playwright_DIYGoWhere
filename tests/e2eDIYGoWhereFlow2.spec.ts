@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-test('e2e test 2 - ', async ({ page }) => {
+test('e2e test 2 - send for approval > upgrade to publish', async ({ page }) => {
   await page.goto('https://uat.diy.gowhere.gov.sg/home');
   await expect(page.getByRole('button', { name: 'How to identify' })).toBeVisible();
 
