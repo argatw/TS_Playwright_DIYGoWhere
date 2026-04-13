@@ -2,7 +2,11 @@
   "name": "ts_playwright_diygowhere",
   "version": "1.0.0",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "test:e2e": "playwright test",
+    "test:e2e:headed": "playwright test --headed",
+    "test:e2e:file": "playwright test tests/e2eDIYGoWhereFlow.spec.ts"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
