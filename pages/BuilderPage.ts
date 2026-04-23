@@ -165,7 +165,6 @@ export class BuilderPage {
       return;
     }
 
-    await this.closeDrawerIfOpen();
     await this.selectSection(sectionId);
     const keyboardDeleteSaveCycle = this.waitForAutosaveCycle({ timeout: 10000 }).catch(() => undefined);
     await this.page.keyboard.press('Delete');
@@ -266,15 +265,5 @@ export class BuilderPage {
         () => true,
         () => false
       );
-  }
-
-  private async closeDrawerIfOpen() {
-    const drawer = this.page.getByRole('dialog', { name: builderPageLocators.drawerName });
-    if (!(await drawer.isVisible({ timeout: 1000 }).catch(() => false))) {
-      return;
-    }
-
-    await drawer.getByLabel(builderPageLocators.drawerCloseLabel).click({ force: true });
-    await expect(drawer).toBeHidden({ timeout: 10000 });
   }
 }
