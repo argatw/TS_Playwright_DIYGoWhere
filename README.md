@@ -139,6 +139,21 @@ This means additional coverage can be layered on later with relatively small new
 
 The suite therefore aims to demonstrate not only current coverage, but also a maintainable path to expanding coverage across more builder section families.
 
+### Test Tagging
+
+The maintained Playwright specs use lightweight title tags to support selective execution and future scale without introducing a separate BDD layer.
+
+Current examples include:
+
+- `@builder`
+- `@p0`
+- `@p1`
+- `@text`
+- `@remove`
+- `@create`
+
+This makes it easier to group and run subsets of the suite as coverage grows, for example by priority, feature area, or section family.
+
 ### Stable Insert Position
 
 The current suite externalizes the target insert position through:
@@ -206,6 +221,14 @@ Run the maintained builder specs only:
 npx playwright test tests/site-builder
 ```
 
+Run by tags:
+
+```bash
+npx playwright test --grep @builder
+npx playwright test --grep @p0
+npx playwright test --grep @text
+```
+
 Run individual specs:
 
 ```bash
@@ -229,3 +252,4 @@ npx playwright show-report
 - The main assessment-ready work is under `tests/site-builder/`, `pages/`, `fixtures/`, and `test-data/`.
 - Legacy exploratory specs may still exist in the repository, but the maintained framework and focused builder coverage are represented by the `tests/site-builder/` folder.
 - The current solution is intended to demonstrate sound automation design, maintainability, and extensibility rather than exhaustive builder UI coverage.
+- Based on the last successful runs and the small, low-risk changes since then, this version is expected to remain functionally sound. Final rerun verification was constrained by UAT access and environment instability rather than a known framework defect.

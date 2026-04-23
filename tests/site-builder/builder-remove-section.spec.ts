@@ -2,7 +2,7 @@ import { test } from '../../fixtures/diyGoWhereFixtures';
 import { BuilderSectionTypes } from '../../test-data/BuilderSectionTypes';
 import { SiteBuilderTestData } from '../../test-data/SiteBuilderTestData';
 
-test('builder remove section - removed section stays removed after reload', async ({
+test('@builder @p0 @remove builder remove section - removed section stays removed after reload', async ({
   builderPage,
   openDraftBuilder,
 }) => {

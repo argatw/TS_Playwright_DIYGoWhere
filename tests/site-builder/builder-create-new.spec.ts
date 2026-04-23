@@ -2,7 +2,7 @@ import { test } from '../../fixtures/diyGoWhereFixtures';
 import { AuthTestData } from '../../test-data/AuthTestData';
 import { SiteBuilderTestData } from '../../test-data/SiteBuilderTestData';
 
-test('builder create new draft site - blank site opens in builder', async ({
+test('@builder @p1 @create builder create new draft site - blank site opens in builder', async ({
   builderPage,
   loginPage,
   sitesPage,

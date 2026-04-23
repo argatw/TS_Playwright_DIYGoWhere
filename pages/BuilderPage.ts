@@ -6,8 +6,6 @@ const builderPageLocators = {
   buildingBlocksTabName: 'Building blocks',
   craftContainer: '[id^="container-"].craft-block-container[type="container"]',
   directCraftDragHandle: ':scope > .sc-gGzvRR[draggable="true"]',
-  drawerCloseLabel: 'Close',
-  drawerName: 'Drawer',
   headingBlock: '[id^="heading-"]',
   insertMenuInstruction: 'Choose a section or drag a block into this space.',
   previewWrapper: '#preview-wrapper',
