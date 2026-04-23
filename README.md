@@ -250,6 +250,5 @@ npx playwright show-report
 ## Notes for Review
 
 - The main assessment-ready work is under `tests/site-builder/`, `pages/`, `fixtures/`, and `test-data/`.
-- Legacy exploratory specs may still exist in the repository, but the maintained framework and focused builder coverage are represented by the `tests/site-builder/` folder.
 - The current solution is intended to demonstrate sound automation design, maintainability, and extensibility rather than exhaustive builder UI coverage.
 - Based on the last successful runs and the small, low-risk changes since then, this version is expected to remain functionally sound. Final rerun verification was constrained by UAT access and environment instability rather than a known framework defect.
