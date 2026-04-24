@@ -52,8 +52,8 @@ export class BuilderPage {
       await buildingBlocksTab.click({ force: true });
     }
 
-    await expect(this.previewWrapper).toBeVisible({ timeout: 30000 });
-    await expect(this.visibleSections.first()).toBeVisible({ timeout: 30000 });
+    await expect(this.previewWrapper).toBeVisible({ timeout: 8000 });
+    await expect(this.visibleSections.first()).toBeVisible({ timeout: 8000 });
   }
 
   async getVisibleSectionOrder(): Promise<string[]> {
@@ -91,14 +91,14 @@ export class BuilderPage {
 
     await expect(
       this.page.getByText(builderPageLocators.insertMenuInstruction, { exact: true })
-    ).toBeVisible({ timeout: 30000 });
+    ).toBeVisible({ timeout: 8000 });
 
     await this.sectionTile(sectionType).click();
 
     await expect
       .poll(async () => this.getVisibleSectionOrder(), {
         message: `Expected adding ${sectionType} from the insert menu to create a visible section.`,
-        timeout: 30000,
+        timeout: 8000,
       })
       .toHaveLength(beforeOrder.length + 1);
 
@@ -122,7 +122,7 @@ export class BuilderPage {
 
   async editTextSection(sectionId: string, heading: string, body: string) {
     const section = this.sectionById(sectionId);
-    await expect(section).toBeVisible({ timeout: 30000 });
+    await expect(section).toBeVisible({ timeout: 8000 });
 
     await this.replaceInlineText(this.headingBlock(section), heading);
     await this.commitInlineEdit();
@@ -133,7 +133,7 @@ export class BuilderPage {
 
   async selectSection(sectionId: string) {
     const selectableContainer = this.sectionSelectableContainer(sectionId);
-    await expect(selectableContainer).toBeVisible({ timeout: 30000 });
+    await expect(selectableContainer).toBeVisible({ timeout: 8000 });
     await selectableContainer.scrollIntoViewIfNeeded();
 
     // Craft.js marks the inner container as selected only when its direct drag handle is clicked.
@@ -145,8 +145,8 @@ export class BuilderPage {
       await selectableContainer.click({ force: true });
     }
 
-    await expect(selectableContainer).toHaveClass(/selected/, { timeout: 30000 });
-    await expect(this.selectedSectionDeleteButton).toBeVisible({ timeout: 30000 });
+    await expect(selectableContainer).toHaveClass(/selected/, { timeout: 8000 });
+    await expect(this.selectedSectionDeleteButton).toBeVisible({ timeout: 8000 });
   }
 
   async removeSection(sectionId: string) {
@@ -156,7 +156,7 @@ export class BuilderPage {
     // if the toolbar click does not remove the selected Craft block.
     const toolbarDeleteSaveCycle = this.waitForAutosaveCycle({ timeout: 10000 }).catch(() => undefined);
     await this.selectedSectionDeleteButton.click();
-    if (await this.waitForSectionToDisappear(sectionId, 5000)) {
+    if (await this.waitForSectionToDisappear(sectionId, 8000)) {
       await toolbarDeleteSaveCycle;
       await this.waitForSaved();
       return;
@@ -176,23 +176,23 @@ export class BuilderPage {
     await expect
       .poll(async () => this.getVisibleSectionOrder(), {
         message: `Expected removed section ${sectionId} to stay removed after reload.`,
-        timeout: 30000,
+        timeout: 8000,
       })
       .not.toContain(sectionId);
   }
 
   async reloadBuilder() {
     await this.page.reload({ waitUntil: 'domcontentloaded' });
-    await expect(this.previewWrapper).toBeVisible({ timeout: 30000 });
+    await expect(this.previewWrapper).toBeVisible({ timeout: 8000 });
   }
 
   async expectTextVisible(text: string) {
-    await expect(this.page.getByText(text, { exact: true })).toBeVisible({ timeout: 30000 });
+    await expect(this.page.getByText(text, { exact: true })).toBeVisible({ timeout: 8000 });
   }
 
   async waitForSaved() {
     await expect(this.saveStatus).toHaveText(builderPageLocators.savedStatusText, {
-      timeout: 30000,
+      timeout: 8000,
     });
   }
 
@@ -226,17 +226,17 @@ export class BuilderPage {
   }
 
   private async replaceInlineText(locator: Locator, value: string) {
-    await expect(locator).toBeVisible({ timeout: 30000 });
+    await expect(locator).toBeVisible({ timeout: 8000 });
     await locator.scrollIntoViewIfNeeded();
     await locator.click({ force: true });
     await this.page.keyboard.press('ControlOrMeta+A');
     await this.page.keyboard.insertText(value);
-    await expect(locator).toContainText(value, { timeout: 30000 });
+    await expect(locator).toContainText(value, { timeout: 8000 });
   }
 
   private async commitInlineEdit() {
     await this.page.keyboard.press('Tab');
-    await this.waitForAutosaveCycle({ timeout: 5000 });
+    await this.waitForAutosaveCycle({ timeout: 8000 });
   }
 
   private async waitForAutosaveCycle({ timeout }: { timeout: number }) {
@@ -249,7 +249,7 @@ export class BuilderPage {
     await expect
       .poll(async () => this.getVisibleSectionOrder(), {
         message: `Expected section ${sectionId} to be removed from the builder.`,
-        timeout: 30000,
+        timeout: 8000,
       })
       .not.toContain(sectionId);
   }

@@ -38,7 +38,7 @@ export class LoginPage {
 
   async loginWithEmail(email: string) {
     await this.loginButton.click();
-    await expect(this.emailInput).toBeVisible({ timeout: 30000 });
+    await expect(this.emailInput).toBeVisible({ timeout: 5000 });
 
     await this.emailInput.fill(email);
     await this.loginWithEmailButton.click();

@@ -49,18 +49,18 @@ export class SitesPage {
   }
 
   async expectStartNewSiteVisible() {
-    await expect(this.startNewSiteHeading).toBeVisible({ timeout: 30000 });
+    await expect(this.startNewSiteHeading).toBeVisible({ timeout: 8000 });
   }
 
   async expectPostLoginLandingVisible() {
     await expect(this.postLoginLandingHeading).toBeVisible({
-      timeout: 30000,
+      timeout: 8000,
     });
   }
 
   async chooseBlankSiteTemplate(templateName: string) {
     await this.blankSiteLink(templateName).click();
-    await expect(this.siteSetupHeading).toBeVisible({ timeout: 30000 });
+    await expect(this.siteSetupHeading).toBeVisible({ timeout: 8000 });
   }
 
   async createDraftSite(siteName: string, themeName: string) {
@@ -72,7 +72,7 @@ export class SitesPage {
   async openSiteDraft(siteName: string) {
     const siteLink = this.siteDraftLink(siteName);
 
-    await expect(siteLink).toBeVisible({ timeout: 30000 });
+    await expect(siteLink).toBeVisible({ timeout: 9000 });
     await siteLink.click();
   }
 }
