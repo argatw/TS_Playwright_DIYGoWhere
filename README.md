@@ -128,7 +128,8 @@ In particular:
 
 - `addSectionFromInsertMenu()` provides a reusable entry point for adding different section types through the same builder flow
 - `removeSection()` provides a reusable section-level delete flow once a section ID is known
-- `editTextSection()` demonstrates how section-specific editing behavior can sit on top of the shared add/select/save building blocks
+- `replaceInlineText()` provides a reusable inline text editing helper that can be applied across text-bearing sections, including mixed content layouts
+- `editTextSection()` demonstrates one section-specific composition built on top of those reusable builder helpers
 
 This means additional coverage can be layered on later with relatively small new specs, for example:
 
@@ -148,9 +149,10 @@ Current examples include:
 - `@builder`
 - `@p0`
 - `@p1`
+- `@new`
+- `@add`
 - `@text`
 - `@remove`
-- `@create`
 
 This makes it easier to group and run subsets of the suite as coverage grows, for example by priority, feature area, or section family.
 
@@ -226,6 +228,7 @@ Run by tags:
 ```bash
 npx playwright test --grep @builder
 npx playwright test --grep @p0
+npx playwright test --grep @add
 npx playwright test --grep @text
 ```
 

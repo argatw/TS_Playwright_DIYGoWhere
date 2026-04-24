@@ -2,7 +2,7 @@ import { test } from '../../fixtures/diyGoWhereFixtures';
 import { BuilderSectionTypes } from '../../test-data/BuilderSectionTypes';
 import { SiteBuilderTestData } from '../../test-data/SiteBuilderTestData';
 
-test('@builder @p0 @text builder add and edit text section - edited content persists after reload', async ({
+test('@builder @p0 @text @add builder add and edit text section - edited content persists after reload', async ({
   builderPage,
   openDraftBuilder,
 }) => {
