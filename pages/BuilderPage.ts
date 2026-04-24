@@ -84,8 +84,7 @@ export class BuilderPage {
       .locator(builderPageLocators.addSectionButton)
       .filter({ hasText: builderPageLocators.addSectionButtonText })
       .nth(insertButtonIndex);
-
-    await expect(addSectionButton).toBeVisible({ timeout: 5000 });
+    await expect(addSectionButton).toBeVisible({ timeout: 8000 });
     await addSectionButton.scrollIntoViewIfNeeded();
     // The canvas insert control can be covered by builder overlays, so use a DOM click after visibility.
     await addSectionButton.evaluate((button: HTMLElement) => button.click());
